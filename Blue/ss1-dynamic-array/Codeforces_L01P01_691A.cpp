@@ -7,13 +7,8 @@
 using namespace std;
 
 bool isFastenedRightWay(vector<int> a) {
-  if (a.size() == 1) {
-    if (a[0] == 1) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+  if (a.size() == 1 && a[0] == 0) return false;
+  if (a.size() == 1 && a[0] == 1) return true;
 
   int unfastened = 0;
   for (int i = 0 ; i < a.size() ; ++i) {
@@ -22,8 +17,7 @@ bool isFastenedRightWay(vector<int> a) {
     }
     if (unfastened > 1) return false;
   }
-  if (unfastened == 1) return true;
-  else return false;
+  return (unfastened == 1);
 }
 
 int main() {
