@@ -3,20 +3,15 @@
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
 #include <string>
 using namespace std;
 
-bool isFastenedRightWay(vector<int> a) {
+bool isFastenedRightWay(const vector<int> a) {
   if (a.size() == 1 && a[0] == 0) return false;
   if (a.size() == 1 && a[0] == 1) return true;
 
-  int unfastened = 0;
-  for (int i = 0 ; i < a.size() ; ++i) {
-    if (a[i] == 0) {
-      unfastened += 1;
-    }
-    if (unfastened > 1) return false;
-  }
+  int unfastened = std::count(a.begin(), a.end(), 0);
   return (unfastened == 1);
 }
 
